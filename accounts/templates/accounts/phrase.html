@@ -1,0 +1,45 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Your recovery phrase - Password Storage{% endblock title %}
+
+{% block content %}
+<div class="recovery-phrase-container">
+    <h2>Your Recovery Phrase</h2>
+    
+    <div class="alert alert-warning">
+        <strong>IMPORTANT!</strong>
+        <ul>
+            <li>This is your recovery phrase. Save it in a secure location.</li>
+            <li>You will need these 24 words to recover your account if you forget your password.</li>
+            <li>These words are shown only ONCE and have also been sent to your email.</li>
+            <li>Never share these words with anyone!</li>
+        </ul>
+    </div>
+
+    <div class="recovery-phrase-grid">
+        {% for word in phrase %}
+            <div class="word-box">
+                <span class="word-number">{{ forloop.counter }}.</span>
+                <span class="word">{{ word }}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="recovery-actions">
+        <button class="btn" onclick="copyPhrase()">Copy All Words</button>
+        <textarea id="phraseText" style="display: none;">{{ phrase_string }}</textarea>
+        
+        <a href="{% url 'accounts/verify_email' %}" class="btn">Continue to Email Verification</a>
+    </div>
+</div>
+<script>
+    function copyPhrase() {
+        var textArea = document.getElementById('phraseText');
+        textArea.style.display = 'block';
+        textArea.select();
+        document.execCommand('copy');
+        textArea.style.display = 'none';
+        alert('Recovery phrase copied to clipboard!');
+    }
+</script>
+{% endblock content %}

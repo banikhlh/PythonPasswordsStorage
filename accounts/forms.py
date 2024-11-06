@@ -25,3 +25,13 @@ class CustomUserForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class RecoveryPhraseForm(forms.Form):
+    words = forms.CharField(widget=forms.Textarea)
+
+    def clean_words(self):
+        words = self.cleaned_data["words"].strip().split()
+        if len(words) != 24:
+            raise forms.ValidationError("Must provide exactly 24 words")
+        return " ".join(words)

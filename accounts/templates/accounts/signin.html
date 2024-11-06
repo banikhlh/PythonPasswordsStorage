@@ -1,0 +1,45 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Login - Password Manager{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="alert alert-error">
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="input">
+        <label for="{{ form.username.id_for_label }}">Email:</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+        <div class="alert alert-error">
+            {{ form.username.errors }}
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="input">
+        <label for="{{ form.password.id_for_label }}">Password:</label>
+        {{ form.password }}
+        {% if form.password.errors %}
+        <div class="alert alert-error">
+            {{ form.password.errors }}
+        </div>
+        {% endif %}
+    </div>
+    
+    <button type="submit" class="btn">Sign In</button>
+    
+    {% comment %}
+    <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up</a></p>
+    <p>Forgot password? <a href="{% url 'accounts:recovery_signin' %}">Recover using 24 words</a></p>
+    {% endcomment %}
+</form>
+{% endblock %}

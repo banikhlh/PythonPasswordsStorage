@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     </head>
     <body>
-        <div id='urlbar'>
+        <div class='urlbar'>
             {% block sidebar %}
             <ul>
                 <li><a href="/">Home</a></li>
@@ -19,7 +19,7 @@
             {% endblock sidebar %}
         </div>
 
-        <div id='content'>
+        <div class='content'>
             {% block content %}{% endblock content %}
         </div>
         <script src="" async defer></script>

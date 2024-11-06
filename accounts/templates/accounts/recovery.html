@@ -1,0 +1,37 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Recovery - Password Manager{% endblock %}
+
+{% block content %}
+<h2>Account Recovery</h2>
+<p>Please enter your 24-word recovery phrase (in correct order):</p>
+
+<form method="post">
+    {% csrf_token %}
+    
+    {% if form.non_field_errors %}
+    <div class="alert alert-error">
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="form-group">
+        <label for="{{ form.words.id_for_label }}">Recovery Phrase:</label>
+        {{ form.words }}
+        <small>Enter all 24 words, separated by spaces</small>
+        {% if form.words.errors %}
+        <div class="alert alert-error">
+            {{ form.words.errors }}
+        </div>
+        {% endif %}
+    </div>
+    
+    <button type="submit" class="btn">Recover Account</button>
+    
+    {% comment %}
+    <p>Remember your password? <a href="{% url 'accounts:signin' %}">Sign in</a></p>
+    {% endcomment %}
+</form>
+{% endblock %}

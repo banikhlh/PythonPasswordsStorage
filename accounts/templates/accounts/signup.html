@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "accounts/base.html" %}
 
 {% block title %}Sign up{% endblock title %}
 
 {% block content %}
 <h2>Sign up</h2>
-<form method='post'>
+<form method="post">
     {% csrf_token %}
 
     {% if form.non_field_errors %}
@@ -18,6 +18,11 @@
     <div class='input'>
         <label for='{{ form.email.id_for_lable }}'>Email:</label>
         {{ form.email }}
+        {% if form.email.errors %}
+        <div class="alert alert-error">
+            {{ form.email.errors }}
+        </div>
+        {% endif %}
     </div>
 
     <div class='input'>
@@ -40,7 +45,7 @@
         {% endif %}
     </div>
 
-    <button type='submit' class='btn btn-primary'>Sign up</button>
+    <button type='submit' class='btn'>Sign up</button>
 
 </form>
 {% endblock content %}
