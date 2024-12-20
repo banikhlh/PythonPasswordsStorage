@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'JetBrainsMono-Medium';
+    src: url('../fonts/JetBrainsMono-Medium.ttf') format('truetype');
+}
+
+body {
+    font-family: 'JetBrainsMono-Medium', monospace;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.input label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input input, .input textarea {
+    width: 40%;
+    padding: 8px;
+    background-color: black;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.content {
+    background-color: black;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    border-radius: 8px grey;
+}
+
+li {
+    list-style-type: none;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-color: green;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    box-shadow: green;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-style: solid;
+}
+
+.btn:hover {
+    background-color: green;
+    color: black;
+}
+
+p {
+    color: black;
+}

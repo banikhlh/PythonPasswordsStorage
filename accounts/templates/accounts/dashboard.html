@@ -1,0 +1,51 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Dashboard - Password Manager{% endblock %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+{% if not user.is_verified %}
+<div class="alert alert-error">
+    Your email is not verified. Please <a href="{% url 'accounts:verify_email' %}">verify your email</a> to access all features.
+</div>
+{% endif %}
+
+<div class="dashboard-content">
+    <h3>Welcome, {{ user.email }}!</h3>
+    
+    <div class="dashboard-stats">
+        {% if user.is_verified %}
+        <p>Your account is fully verified ✓</p>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <p>You are logged in as {{ user.email }}</p>
+        {% else %}
+        <p>You are not logged in</p>
+        <p>Please <a href="{% url 'accounts:signin' %}">signin</a> to access your dashboard</p>
+        <p>If you don't have an account, please <a href="{% url 'accounts:signup' %}">signup</a></p>
+        {% endif %}
+        
+        <!-- Здесь будет контент дашборда -->
+    </div>
+    
+    <div class="dashboard-actions">
+        <a href="{% url 'accounts:signout' %}" class="btn">Signout</a>
+    </div>
+</div>
+
+<style>
+    .dashboard-content {
+        padding: 20px;
+    }
+    .dashboard-stats {
+        margin: 20px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 4px;
+    }
+    .dashboard-actions {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
