@@ -8,7 +8,7 @@
     {% csrf_token %}
     
     {% if form.non_field_errors %}
-    <div class="alert alert-error">
+    <div>
         {% for error in form.non_field_errors %}
             {{ error }}
         {% endfor %}
@@ -19,7 +19,7 @@
         <label for="{{ form.username.id_for_label }}">Email:</label>
         {{ form.username }}
         {% if form.username.errors %}
-        <div class="alert alert-error">
+        <div">
             {{ form.username.errors }}
         </div>
         {% endif %}
@@ -29,7 +29,7 @@
         <label for="{{ form.password.id_for_label }}">Password:</label>
         {{ form.password }}
         {% if form.password.errors %}
-        <div class="alert alert-error">
+        <div>
             {{ form.password.errors }}
         </div>
         {% endif %}

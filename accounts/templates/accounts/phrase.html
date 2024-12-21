@@ -3,20 +3,18 @@
 {% block title %}Your recovery phrase - Password Storage{% endblock title %}
 
 {% block content %}
-<div class="recovery-phrase-container">
+<div class="content">
     <h2>Your Recovery Phrase</h2>
     
-    <div class="alert alert-warning">
-        <strong>IMPORTANT!</strong>
-        <ul>
-            <li>This is your recovery phrase. Save it in a secure location.</li>
-            <li>You will need these 24 words to recover your account if you forget your password.</li>
-            <li>These words are shown only ONCE and have also been sent to your email.</li>
-            <li>Never share these words with anyone!</li>
-        </ul>
-    </div>
+    <strong>IMPORTANT!</strong>
+    <ul>
+        <li>This is your recovery phrase. Save it in a secure location.</li>
+        <li>You will need these 24 words to recover your account if you forget your password.</li>
+        <li>These words are shown only ONCE and have also been sent to your email.</li>
+        <li>Never share these words with anyone!</li>
+    </ul>
 
-    <div class="recovery-phrase-grid">
+    <div class="content">
         {% for word in phrase %}
             <div class="word-box">
                 <span class="word-number">{{ forloop.counter }}.</span>
@@ -25,10 +23,9 @@
         {% endfor %}
     </div>
 
-    <div class="recovery-actions">
+    <div class="content">
         <button class="btn" onclick="copyPhrase()">Copy All Words</button>
         <textarea id="phraseText" style="display: none;">{{ phrase_string }}</textarea>
-        
         <a href="{% url 'accounts/verify_email' %}" class="btn">Continue to Email Verification</a>
     </div>
 </div>
